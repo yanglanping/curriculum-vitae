@@ -13,4 +13,4 @@ window.addEventListener('keyup',function(event){
 // 禁止鼠标右键
 document.addEventListener('contextmenu', function(e) {
   e.preventDefault();
-})  
+})

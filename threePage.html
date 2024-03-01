@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目经验</title>
+  <link rel="stylesheet" href="./css/initialize.css">
+  <style>
+    body{
+      padding:0 10%;
+    }
+    h2::before{
+      width:0;
+      height:0;
+    }
+    .box{
+      margin-bottom:2%;
+      padding:1rem 2rem;
+      background: linear-gradient(to right, #fad8ab,#ebf4a7, #a6fd90);
+      border-radius:12px;
+    }
+    p{
+      font-size:1rem;
+      margin:0.5rem 0;
+    }
+    ol{
+      padding-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="flex-center">项目经验</h1>
+</body>
+<script src="./js/eventFunction.js"></script>
+<script>
+const messageArray = [
+{
+  date:'2022-12 ~ 2023-07',
+  name:'岭南洞天药市',
+  enterprise:'广东三道堂投资控股集团有限公司',
+  details:`岭南洞天药市是线上线下相融合的中医药交易平台。
+        主要围绕交易这个核心为中医药种植，加工，销售，服务环节赋能，为商家和个人提供线上服务。
+        其中我主要负责的模块：框架的搭建与维护，十六大功能，溯源大屏检测系统`,
+  content:`1、对岭南洞天药市沙盘进行维护及二次开发
+    2、使用uniapp+firstui搭建岭南洞天药市框架，并对一些公共的组件和方法进行封装。运用vue+vant搭建web端，web端主要实现的是十六大功能
+    3、溯源检测系统是岭南洞天药市溯源功能中的一个模块，主要是使用mtqq搭配硬件做一个植物数据的实时监控。实现是用uniapp+ucharts搭建的整体页面。
+    通过封装axios拦截器，使用axios请求后台接口并进行页面数据的渲染
+  `,
+  technologyStack:'vue+vant,uniapp+firstui+ucahrts,axios,vuex等。'
+},
+{
+  date:'2023-02 ~ 2023-03',
+  name:'罗浮山八卦掌小程序',
+  enterprise:'广东三道堂投资控股集团有限公司',
+  details:`主要宣传八卦掌之术，其中有登录/入会，咨询以及功法教学`,
+  content:`1、使用uniapp+first-ui搭建基本框架
+  2、封装公共组件（方法）和拦截器
+  3、使用webview连接web端
+  4、使用vant+vue搭建web页面，使用FTP管理
+  5、与后端有效的沟通，并渲染数据
+  `,
+  technologyStack:'vue,uniapp,firstui,vant,sass,axios,ftp'
+}
+]
+
+messageArray.forEach(item => {
+  // 创建容器
+  const box = document.createElement('div');
+  box.className = 'box';
+
+  const title = document.createElement('div');
+  title.classList.add('title','flex-around-center')
+  const titleDate = document.createElement('div')
+  titleDate.textContent=item.date;
+  const titleName = document.createElement('h2')
+  titleName.textContent=item.name;
+  const titleCompany = document.createElement('div')
+  titleCompany.textContent=item.enterprise;
+
+  const p = document.createElement('p');
+  const pB =  document.createElement('b');
+  pB.textContent = '项目描述：';
+  p.textContent = item.details;
+  
+  const mainContent = document.createElement('div');
+  const contentB = document.createElement('b');
+  contentB.textContent = '主要实现：';
+  const ol = document.createElement('ol');
+
+  var contentArr = item.content.replace(/\s/g, '').split(/\d+、/);
+  contentArr.forEach(it=>{
+    if(it.length>0){
+      const li = document.createElement('li');
+      li.textContent = it;
+      ol.appendChild(li);
+    }
+  })
+
+  const technologyStack = document.createElement('div');
+  technologyStack.className = 'technology-stack';
+  technologyStack.textContent = '技术栈：' + item.technologyStack;
+
+  document.body.appendChild(box);
+  box.appendChild(title);
+  title.appendChild(titleDate);
+  title.appendChild(titleName);
+  title.appendChild(titleCompany);
+
+  box.appendChild(p);
+  p.insertBefore(pB,p.firstChild);  //新增节点到前面
+  
+  box.appendChild(mainContent);
+  mainContent.appendChild(contentB);
+  mainContent.appendChild(ol);
+
+  box.appendChild(technologyStack);
+});
+</script>
+</html>

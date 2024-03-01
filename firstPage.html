@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人信息</title>
+  <link rel="stylesheet" href="./css/initialize.css">
+  <style>
+    body{
+      background: linear-gradient(to bottom right,#b3f5b9,#ebc8fc);
+    }
+    .message{
+      width:65%;
+    }
+    .message>div{
+      margin-bottom:1rem;
+    }
+    .avatar{
+      width:30%;
+      height:20rem;
+      border-radius:20px;
+      overflow: hidden;
+      box-shadow:0 0 1px 1px #ccc;
+      transition: all 0.3s ease;
+    } 
+    .avatar:hover{
+      box-shadow: 0 0 10px 2px #ccc;
+      cursor: pointer;
+    }
+    table{
+      width:100%;
+    }
+    .basic-information td{
+      height:2.5rem;
+    }
+    .education-experience td{
+      height:2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="flex-center">个人信息</h1>
+  <div class="flex-between" style="padding:0 5%;height:75%;">
+    <!-- 照片 -->
+    <div class="avatar">
+      <img id="avatar" srcset="" style="width:100%;height:100%;">
+    </div>
+    <!-- 个人信息 -->
+    <div class="message flex-column">
+      <!-- 基本信息 -->
+      <div class="basic-information">
+        <h2>基本信息</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>姓名：杨岚萍</td>
+              <td>性别：女</td>
+            </tr>
+            <tr>
+              <td>年龄：20</td>
+              <td>出生日期：2004-05-24</td>
+            </tr>
+            <tr>
+              <td>籍贯：汉</td>
+              <td>联系方式：19147914508</td>
+            </tr>
+            <tr>
+              <td>邮箱：2795990659@qq.com</td>
+              <td>现居地址：广州市白云区  </td>
+            </tr>
+            <tr>
+              <td>工作性质：全职</td>
+              <td>职位：web前端开发</td>
+            </tr>
+            <tr>
+              <td>在职状况：在职</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 教育经历 -->
+      <div class="education-experience">
+        <h2>教育经历</h2>
+        <table>
+          <thead>
+            <tr>
+              <td>时间</td>
+              <td>学院名称</td>
+              <td>学历</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2020-03-01 ~ 2024-06-30</td>
+              <td>湖南高尔夫旅游职业学院</td>
+              <td>大专</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>专业技能</h2>
+        <ul>
+          <li>了解HTML+CSS，HTML5+CSS3，弹性盒子布局模式等web前端开发技术</li>
+          <li>熟悉使用jQuery，ajax，完成服务器交互，页面动画效果</li>
+          <li>熟悉Bootstarp，vue+Element-ui，vue+vant，vue+frist-ui</li>
+          <li>熟练使用vue框架，vue-cli脚手架，vue组件化构建</li>
+          <li>了解axios二次封装，请求、响应拦截</li>
+          <li>熟练uniapp，微信小程序（有相关上线项目）</li>
+          <li>熟悉css常用预处理器sass，less</li>
+          <li>了解Node.js，包管理器npm及数据库Mysql,Moongdb</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/eventFunction.js"></script>
+<script>
+  const avatar = document.getElementById('avatar');
+  avatar.src = './img/avatar.jpg';
+</script>
+</html>

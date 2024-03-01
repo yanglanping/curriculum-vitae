@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple PPT</title>
+<link rel="stylesheet" href="./css/initialize.css">
+<style>
+  .slide{
+    height:100vh;
+    width:100%;
+  }
+  iframe{
+    width:100%;
+    height:100%;
+  }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+  <script>
+    // 创建节点
+    const arr = ['firstPage','secondPage','threePage','fourthPage'];
+    // const arr = ['threePage']
+    arr.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'slide';
+      const iframe =  document.createElement('iframe')
+      iframe.src = './'+item+'.html';
+      iframe.frameBorder = "0";
+      document.body.appendChild(div);
+      div.appendChild(iframe)
+    });
+
+    const slides = document.querySelectorAll('.slide');
+    let currentSlideIndex = 0;
+    // 滚动翻页
+    window.addEventListener('wheel', function(e) {
+       console.log('页面滚动')
+        // 阻止页面滚动
+        e.preventDefault();
+        const delta = e.deltaY;
+        eventFunction({type:'wheel',delta})
+    },{ passive: false });
+    // 键盘事件 上下键翻页
+    window.addEventListener('keyup',(event)=>{
+      eventFunction({type:'keyup',keyCode:event.keyCode})
+    })
+
+    window.addEventListener('message', function(event) {
+      // 接收来自 iframe 页面的消息
+      const data = event.data;
+      // 在此处处理从 iframe 页面传递过来的数据
+      eventFunction(data)
+    });
+
+    // 滚动翻页
+    function eventFunction(data){
+      const {keyCode,delta} = data;
+      if(data.type == 'wheel'){
+        if (delta > 0 && currentSlideIndex < slides.length - 1) {
+            // 向下滚动
+            slides[currentSlideIndex].style.display = 'none';
+            currentSlideIndex++;
+            slides[currentSlideIndex].style.display = 'block';
+        } else if (delta < 0 && currentSlideIndex > 0) {
+            // 向上滚动
+            slides[currentSlideIndex].style.display = 'none';
+            currentSlideIndex--;
+            slides[currentSlideIndex].style.display = 'block';
+        }
+      }else if(data.type == 'keyup'){
+        if(keyCode == 39 || keyCode == 40){  //右箭头
+            if(currentSlideIndex<slides.length-1){
+              slides[currentSlideIndex].style.display = 'none';
+              currentSlideIndex++;
+              slides[currentSlideIndex].style.display = 'block';
+            }
+          }else if(keyCode == 37 || keyCode == 38){ //左箭头
+            if(currentSlideIndex>0){
+              slides[currentSlideIndex].style.display = 'none';
+              currentSlideIndex--;
+              slides[currentSlideIndex].style.display = 'block';
+            }
+          }
+        }
+    }
+  </script>
+</body>
+</html>

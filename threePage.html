@@ -8,7 +8,9 @@
   <style>
     body{
       padding:0 10%;
+      background:linear-gradient(to left,#ffb37c,#ffc5c5) ;
     }
+    h1{color: #f90e0ee4;}
     h2::before{
       width:0;
       height:0;
@@ -17,6 +19,7 @@
       margin-bottom:2%;
       padding:1rem 2rem;
       background: linear-gradient(to right, #fad8ab,#ebf4a7, #a6fd90);
+      box-shadow:0 0 5px 1px #ebb773;
       border-radius:12px;
     }
     p{
@@ -74,7 +77,7 @@ messageArray.forEach(item => {
   titleDate.textContent=item.date;
   const titleName = document.createElement('h2')
   titleName.textContent=item.name;
-  const titleCompany = document.createElement('div')
+  const titleCompany = document.createElement('b')
   titleCompany.textContent=item.enterprise;
 
   const p = document.createElement('p');

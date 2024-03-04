@@ -126,8 +126,8 @@
 <script>
    var hostname = window.location.href;
    let lastIndex = hostname.lastIndexOf('/');
-   hostname = hostname.substring(0,lastIndex-1);
-  console.log(hostname);
+   hostname = hostname.substring(0,lastIndex+1);
+  console.log('hostname',hostname);
    const avatar = document.getElementById('avatar');  
      fetch(hostname + 'img/avatar.jpg')
     .then(res => {

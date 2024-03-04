@@ -124,8 +124,10 @@
 </body>
 <script src="./js/eventFunction.js"></script>
 <script>
-   const hostname = window.location.href;
-   console.log(hostname);
+   var hostname = window.location.href;
+   let lastIndex = hostname.lastIndexOf('/');
+   hostname = hostname.substring(0,lastIndex);
+  console.log(hostname);
    const avatar = document.getElementById('avatar');  
      fetch(hostname + 'img/avatar.jpg')
     .then(res => {

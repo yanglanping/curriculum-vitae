@@ -124,7 +124,31 @@
 </body>
 <script src="./js/eventFunction.js"></script>
 <script>
-  const avatar = document.getElementById('avatar');
-  avatar.src = './img/avatar.jpg';
-</script>
+   const hostname = window.location.href;
+   const avatar = document.getElementById('avatar');  
+     fetch(hostname + 'img/avatar.jpg')
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return res.arrayBuffer();
+    })
+    .then(data => {
+        const blob = new Blob([data]);
+        const imgDom = new Image();
+        imgDom.src = URL.createObjectURL(blob);  //转换格式
+        imgDom.onload = () => {
+            avatar.src = imgDom.src;  //赋值地址
+            // 清除临时URL  
+            URL.revokeObjectURL(imgDom.src);
+        };
+        imgDom.onerror = () => {
+            console.error('Image failed to load');
+            URL.revokeObjectURL(imgDom.src);
+        };
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });  
+</script>  
 </html>

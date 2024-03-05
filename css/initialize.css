@@ -94,7 +94,6 @@ html,body{
 h1{
   height:15%;
   font-size:4rem;
-  color: #4d35fe;
   font-family: '楷体';
   text-align: center;
 }
@@ -122,4 +121,10 @@ ol,ul{
 li{
   font-size:1rem;
   line-height: 1.7rem;
+}
+
+.technology-stack{
+  color:red;
+  font-weight:600;
+  margin-bottom:0.5rem;
 }

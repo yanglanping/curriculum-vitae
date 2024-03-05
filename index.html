@@ -31,12 +31,41 @@
       div.appendChild(iframe)
     });
 
-    // pc端处理
+    // 图片懒加载
+    document.addEventListener('DOMContentLoaded',function(){
+      var lazyImages = document.querySelectorAll('.lazy-load');
+      function lazyLoad(){
+        lazyImages.forEach(function(img){
+          console.log('img',img)
+          if(isInViewprot(img)){
+            img.setAttribute('src',img.getAttribute('data-src'));
+            img.classList.remove('lazy-load');
+          }
+        });
+      }
+
+      function isInViewprot(element){
+        console.log('element',element);
+        var rect = element.getBoundingClientRect();
+        console.log('rect',rect)
+        return (
+          rect.bottom >= 0 &&
+          rect.right >= 0 &&
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+    })
+
+    // pc/移动端处理
     var userAgent = navigator.userAgent;
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
     console.log('是否是手机端口',isMobile)
     if(isMobile){
-      
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach(item=>{
+        item.style.padding = '3%';
+      })
     }else{
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';

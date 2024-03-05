@@ -9,6 +9,12 @@
     body{
       background: linear-gradient(to bottom right,#b3f5b9,#ebc8fc);
     }
+    h1{
+      background:linear-gradient(to bottom right, #36f347, #bf3aff); /* 渐变颜色 */
+      -webkit-background-clip: text; /* Safari/Chrome浏览器支持的属性 */
+      background-clip: text; /* 定义渐变应用于文本 */
+      color: transparent; /* 将文字颜色设置为透明 */
+    }
     .message{
       width:65%;
     }
@@ -124,10 +130,10 @@
 </body>
 <script src="./js/eventFunction.js"></script>
 <script>
-   var hostname = window.location.href;
+  //  var hostname = window.location.href;
+   var hostname = 'https://yanglanping.github.io/curriculum-vitae/firstPage.html';  //本地调试
    let lastIndex = hostname.lastIndexOf('/');
    hostname = hostname.substring(0,lastIndex+1);
-  console.log('hostname',hostname);
    const avatar = document.getElementById('avatar');  
      fetch(hostname + 'img/avatar.jpg')
     .then(res => {

@@ -8,7 +8,6 @@
 </head>
 <style>
   body{
-    /* background:linear-gradient(to bottom left,#cffdff, #d8ffdb); */
     background:linear-gradient(to left,#ffb37c,#ffc5c5) ;
     padding:0 10%;
   }
@@ -20,10 +19,8 @@
     margin-bottom:2%;
     padding:1rem 2rem;
     border-radius:12px;
-    /* background:linear-gradient(to bottom right,#90f0f7,#a2f3c5); */
-    /* box-shadow: 0 0 5px 2px #cffdff; */
-    background: linear-gradient(to right, #fad8ab,#ebf4a7, #a6fd90);
-    box-shadow:0 0 5px 1px #ebb773;
+    background: linear-gradient(to left,#ffb37c,#ffc5c5);
+    box-shadow:0 0 5px 1px #bba280;
     width:100%;
   }
   p{
@@ -35,86 +32,13 @@
 </body>
 <script src="./js/eventFunction.js"></script>
 <script>
-const messageArray = [
-{
-  date:'2023-11 ~ 2023-12',
-  name:'退款小程序',
-  enterprise:'广州沧海传媒有限公司',
-  details:`主要是给购买过公司旗下商户的产品的用户使用。用户出现误买或者其他等情况，想退款通过购买时支付详情中的交易订单或者商户订单进入小程序进行退款。
-    退款会进入到一个系统审核，当系统审核完成后用户即可进行退款，退款成功失败会给到用户一个状态提示。
-    如果用户有不满意的地方可以针对情况进行填写信息投诉，也可以联系商户/客服了解具体情况`,
-  content:`1、项目的搭建，主要是通过uniapp + vue搭建项目
-      2、封装uview中请求、响应拦截器、公共方法
-      3、实现退款的业务逻辑功能。例如：存储数据进行审核，请求后端进行退款等。 
-      4、后期的维护及更新`,
-  technologyStack:'uniapp + uview'
-},
-{
-  date:'2023-12 ~ 2023-12',
-  name:'数据展示小程序',
-  enterprise:'广州沧海传媒有限公司',
-  details:`用于公司内部人员使用，方便公司人员随时查看公司业务的一个数据。`,
-  content:`1、封装uniapp自带的请求，实现拦截器的效果
-      2、封装公共的组件，使用vuex+minixs进行数据的交互
-      3、使用ucharts绘画图表，通过uview组件实现全屏展示
-      4、与后端配合，获取并处理数据，将其渲染到页面和图表
-      5、后期的维护及更新
-    `,
-  technologyStack:'uniapp + uview + ucharts'
-}
-]
-
-messageArray.forEach(item => {
-  // 创建容器
-  const box = document.createElement('div');
-  box.className = 'box';
-
-  const title = document.createElement('div');
-  title.classList.add('title','flex-around-center')
-  const titleDate = document.createElement('div')
-  titleDate.textContent=item.date;
-  const titleName = document.createElement('h2')
-  titleName.textContent=item.name;
-  const titleCompany = document.createElement('b')
-  titleCompany.textContent=item.enterprise;
-
-  const p = document.createElement('p');
-  const pB = document.createElement('b');
-  pB.textContent = '项目描述：';
-  p.textContent = item.details;
-  
-  const mainContent = document.createElement('div');
-  const contentB = document.createElement('b');
-  contentB.textContent = '完成';
-  const ol = document.createElement('ol');
-
-  var contentArr = item.content.replace(/\s/g, '').split(/\d+、/);
-  contentArr.forEach(it=>{
-    if(it.length>0){
-      const li = document.createElement('li');
-      li.textContent = it;
-      ol.appendChild(li);
-    }
-  })
-
-  const technologyStack = document.createElement('div');
-  technologyStack.className = 'technology-stack';
-  technologyStack.textContent = '技术栈：' + item.technologyStack;
-
-  document.body.appendChild(box);
-  box.appendChild(title);
-  title.appendChild(titleDate);
-  title.appendChild(titleName);
-  title.appendChild(titleCompany);
-
-  box.appendChild(p);
-  p.insertBefore(pB,p.firstChild);
-  
-  box.appendChild(mainContent);
-  mainContent.appendChild(contentB);
-  mainContent.appendChild(ol);
-
-  box.appendChild(technologyStack);
-});
+  var page = 2;
+</script>
+<script src="./js/projectDetails.js"></script>
+<script>
+  if(isMobile){
+    document.body.style.paddingTop = '20%';
+    document.body.style.justifyContent = 'flex-start';
+  }
 </script>
 </html>

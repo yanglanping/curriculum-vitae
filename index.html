@@ -36,7 +36,6 @@
       var lazyImages = document.querySelectorAll('.lazy-load');
       function lazyLoad(){
         lazyImages.forEach(function(img){
-          console.log('img',img)
           if(isInViewprot(img)){
             img.setAttribute('src',img.getAttribute('data-src'));
             img.classList.remove('lazy-load');
@@ -63,8 +62,10 @@
     console.log('是否是手机端口',isMobile)
     if(isMobile){
       const slides = document.querySelectorAll('.slide');
-      slides.forEach(item=>{
+      const iframes = document.getElementsByTagName('iframe');
+      slides.forEach((item,index)=>{
         item.style.padding = '3%';
+        iframes[index].style.borderRadius = '12px';
       })
     }else{
       document.documentElement.style.overflow = 'hidden';
